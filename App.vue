@@ -1,55 +1,30 @@
 <template>
-  <view class="container">
-    <!-- <view class="container">
-    <text class="text-color-primary">{{ title }}</text>
-    <Hello />
-    </view>-->
-    <HomeScreen
-      v-if="activeScreen === 'homeScreen'"
-      :testingData="testingData"
-      :navigate="navigate"
-    />
-    <Screen1 v-if="activeScreen === 'screen1'" :navigate="navigate" />
-  </view>
+  <App v-if="isAppReady" />
 </template>
 
 <script>
-// import Hello from "./src/components/Hello";
-import HomeScreen from "@/screens/HomeScreen";
-import Screen1 from "@/screens/Screen1";
+import App from "./src";
+import React from "react";
+import { AppLoading } from "expo";
+import { Container, Text } from "native-base";
+import * as Font from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
 export default {
   components: {
-    // Hello
-    HomeScreen,
-    Screen1
+    App
   },
-  // data() {
-  //   return {
-  //     title: "MY NEW APP ::MYAPP"
-  //   };
-  // }
   data() {
     return {
-      activeScreen: "homeScreen",
-      testingData: "value from App Component"
+      isAppReady: false
     };
   },
-  methods: {
-    navigate(screen) {
-      this.activeScreen = screen;
-    }
+  async created() {
+    await Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      ...Ionicons.font
+    });
+    this.isAppReady = true;
   }
 };
 </script>
-
-<style>
-.container {
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-}
-.text-color-primary {
-  color: blue;
-}
-</style>

@@ -1,8 +1,8 @@
 <template>
   <view>
     <text class="text-color-primary">{{ title }}</text>
-    <text>{{ testingData }}</text>
-    <button title="Go to screen1" :on-press="()=>navigate('screen1')" />
+    <!-- <text>{{ testingData }}</text> -->
+    <button title="Go to screen1" :on-press="goToScreen1" />
     <Hello />
   </view>
 </template>
@@ -14,13 +14,23 @@ export default {
     Hello
   },
   props: {
-    testingData: {
-      type: String,
-      required: false
-    },
-    navigate: {
-      type: Function,
-      required: true
+    navigation: {
+      type: Object
+    }
+  },
+  // props: {
+  //   testingData: {
+  //     type: String,
+  //     required: false
+  //   },
+  //   navigate: {
+  //     type: Function,
+  //     required: true
+  //   }
+  // },
+  methods: {
+    goToScreen1() {
+      this.navigation.navigate("Screen1");
     }
   },
   data() {

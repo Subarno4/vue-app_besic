@@ -1,17 +1,12 @@
 <template>
   <view>
     <text class="text-color-primary">{{ title }}</text>
-    <button title="Go to Screen2" :on-press="goToScreen2" />
+    <!-- <button title="Go to Home" :on-press="()=>navigate('homeScreen')" /> -->
   </view>
 </template>
 
 <script>
 export default {
-  props: {
-    navigation: {
-      type: Object
-    }
-  },
   // props: {
   //   navigate: {
   //     type: Function,
@@ -20,13 +15,8 @@ export default {
   // },
   data() {
     return {
-      title: "I am Screen1"
+      title: "I am Screen2"
     };
-  },
-  methods: {
-    goToScreen2() {
-      this.navigation.navigate("Screen2");
-    }
   }
 };
 </script>
