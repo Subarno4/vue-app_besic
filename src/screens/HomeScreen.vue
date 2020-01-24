@@ -2,8 +2,12 @@
   <view>
     <text class="text-color-primary">{{ title }}</text>
     <!-- <text>{{ testingData }}</text> -->
-    <button title="Go to screen1" :on-press="goToScreen1" />
+    <!-- <button title="Go to screen1" :on-press="goToScreen1" /> -->
+    <!-- <nb-button light title="Go to screen1" :on-press="goToScreen1"> -->
     <Hello />
+    <nb-button info light title="Go to screen1" :on-press="goToScreen1">
+      <nb-text>Go to screen1</nb-text>
+    </nb-button>
   </view>
 </template>
 
